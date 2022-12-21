@@ -1,0 +1,3 @@
+username;transaction_date;transaction_value;transaction_description;transaction_type;local_type
+juarez;18/12/2022 12:10:00;513.27;VENDA A VISTA;D;15
+marcia;18/12/2022 12:10:00;923.27;VENDA CREDITO;C;10
