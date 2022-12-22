@@ -20,6 +20,21 @@ CONSTRAINT PK_SALES PRIMARY KEY (sale_id),
 FOREIGN KEY (local_type) REFERENCES local_type(local_id)
 );
 
+INSERT INTO local_type
+VALUES (null, 'CANDY SHOP');
+
+INSERT INTO local_type
+VALUES (null, 'CLOTHING STORE');
+
+INSERT INTO local_type
+VALUES (null, 'GAS STATION');
+
+INSERT INTO local_type
+VALUES (null, 'TRAVEL AGENCY');
+
+INSERT INTO local_type
+VALUES (null, 'E-COMMERCE');
+
 CREATE PROCEDURE generateDebitData()
 BEGIN
 	DECLARE i int DEFAULT 1;
