@@ -25,7 +25,6 @@ public class FileCreatorjobConfig {
         return new JobBuilder("newFileJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(newFileStep)
-
                 .build();
     }
 
