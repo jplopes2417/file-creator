@@ -11,15 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FileCreatorjobConfig {
 
-//    @Bean
-//    public Job newFileJob(Step newFileStep){
-//        return jobBuilderFactory
-//                .get("newFileJob")
-//                .start(newFileStep)
-//                .incrementer(new RunIdIncrementer())
-//                .build();
-//    }
-
     @Bean
     public Job newFileJob(JobRepository jobRepository, Step newFileStep){
         return new JobBuilder("newFileJob", jobRepository)
@@ -27,6 +18,5 @@ public class FileCreatorjobConfig {
                 .start(newFileStep)
                 .build();
     }
-
 
 }

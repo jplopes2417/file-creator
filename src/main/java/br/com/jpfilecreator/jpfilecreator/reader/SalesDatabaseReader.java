@@ -3,10 +3,10 @@ package br.com.jpfilecreator.jpfilecreator.reader;
 import br.com.jpfilecreator.jpfilecreator.constants.QueriesConstants;
 import br.com.jpfilecreator.jpfilecreator.mapper.SaleRowMapper;
 import br.com.jpfilecreator.jpfilecreator.model.Sale;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.support.MySqlPagingQueryProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,15 +15,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@Slf4j
 public class SalesDatabaseReader {
 
-    @Autowired
-    private DataSource dataSource;
-
     @Bean
-    public JdbcPagingItemReader<Sale> jdbcPagingItemReader(){
+    public JdbcPagingItemReader<Sale> jdbcPagingItemReader(DataSource dataSource){
+        log.info("Reading the sales from database...");
+
         JdbcPagingItemReader<Sale> reader = new JdbcPagingItemReader<>();
-        reader.setDataSource(this.dataSource);
+        reader.setDataSource(dataSource);
         reader.setFetchSize(10);
         reader.setRowMapper(new SaleRowMapper());
 
@@ -37,6 +37,7 @@ public class SalesDatabaseReader {
 
         reader.setQueryProvider(mySqlPagingQueryProvider);
 
+        log.info("Reading finished successfully!");
         return reader;
 
     }
